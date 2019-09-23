@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IMove
 {
+    public float Speed => moveSpeed;
     [SerializeField] private float moveSpeed = 3f;
     private bool isMoving = false;
+    public bool canMove = true;
 
     private Vector2 input;
     private Vector3 startPos;
@@ -20,7 +22,7 @@ public class Player : MonoBehaviour
         Movement();
     }
 
-    private void Movement()
+    public void Movement()
     {
         if (!isMoving)
         {
@@ -35,14 +37,11 @@ public class Player : MonoBehaviour
                 input.x = 0f;
             }
 
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, -input, 1f);
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, input, 1f);
 
-            if (hit.collider != null)
+            if (hit.collider == null && input != Vector2.zero && canMove)
             {
-                if (input != Vector2.zero)
-                {
-                    StartCoroutine(Move(transform));
-                }
+                StartCoroutine(Move(transform));
             }
         }
     }
@@ -57,7 +56,7 @@ public class Player : MonoBehaviour
 
         while (time < 1f)
         {
-            time += Time.deltaTime * moveSpeed;
+            time += Time.deltaTime * Speed;
             entity.position = Vector3.Lerp(startPos, endPos, time);
             yield return null;
         }
