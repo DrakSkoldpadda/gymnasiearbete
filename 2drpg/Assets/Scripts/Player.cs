@@ -14,11 +14,6 @@ public class Player : MonoBehaviour
 
     private float time;
 
-    [SerializeField] private Collider2D leftCollider;
-    [SerializeField] private Collider2D topCollider;
-    [SerializeField] private Collider2D rightCollider;
-    [SerializeField] private Collider2D bottomCollider;
-
     // Update is called once per frame
     void Update()
     {
@@ -29,9 +24,7 @@ public class Player : MonoBehaviour
     {
         if (!isMoving)
         {
-            input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-
-            CheckMove();
+            input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
             if (Mathf.Abs(input.x) > Mathf.Abs(input.y))
             {
@@ -42,16 +35,16 @@ public class Player : MonoBehaviour
                 input.x = 0f;
             }
 
-            if (input != Vector2.zero)
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, -input, 1f);
+
+            if (hit.collider != null)
             {
-                StartCoroutine(Move(transform));
+                if (input != Vector2.zero)
+                {
+                    StartCoroutine(Move(transform));
+                }
             }
         }
-    }
-
-    private void CheckMove()
-    {
-
     }
 
     private IEnumerator Move(Transform entity)
