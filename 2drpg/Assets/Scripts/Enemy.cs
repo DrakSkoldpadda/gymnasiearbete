@@ -20,6 +20,6 @@ public class Enemy : MonoBehaviour, IMove
 
     public void Movement()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, input, 1f);
+        //RaycastHit2D hit = Physics2D.Raycast(transform.position, input, 1f);
     }
 }
