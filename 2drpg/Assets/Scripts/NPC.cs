@@ -2,20 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPC : MonoBehaviour, IMove
+public class NPC : MonoBehaviour
 {
-    public float Speed => speed;
-    private float speed = 2;
+    public Dialogue dialogue;
 
-    private float time;
-
-    private Vector2 direction;
-
-    private Player player;
+    public void TriggerDialogue()
+    {
+        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+    }
 
     private void Awake()
     {
-        player = GameObject.FindWithTag("Player").GetComponent<Player>();
+
     }
 
     // Start is called before the first frame update
@@ -26,18 +24,6 @@ public class NPC : MonoBehaviour, IMove
 
     // Update is called once per frame
     void Update()
-    {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 1f);
-
-        if (hit.collider.tag == "Player")
-        {
-            player.canMove = false;
-
-            Movement();
-        }
-    }
-
-    public void Movement()
     {
 
     }

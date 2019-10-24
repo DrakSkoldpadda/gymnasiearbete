@@ -43,6 +43,11 @@ public class Player : MonoBehaviour, IMove
             {
                 StartCoroutine(Move(transform));
             }
+            else if (hit.collider.tag == "NPC" && input != Vector2.zero && canMove)
+            {
+                hit.collider.GetComponent<NPC>().TriggerDialogue();
+            }
+
         }
     }
 
