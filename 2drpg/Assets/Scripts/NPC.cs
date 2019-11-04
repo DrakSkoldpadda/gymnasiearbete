@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPC : MonoBehaviour
+public class NPC : MonoBehaviour, IMove
 {
     public Dialogue dialogue;
 
-    public void TriggerDialogue()
-    {
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
-    }
+    public float Speed => speed;
+    private float speed;
 
     private void Awake()
     {
@@ -26,5 +24,15 @@ public class NPC : MonoBehaviour
     void Update()
     {
 
+    }
+
+    public void Movement()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void TriggerDialogue()
+    {
+        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
     }
 }
