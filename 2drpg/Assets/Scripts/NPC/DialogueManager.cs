@@ -12,6 +12,13 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
 
+    private Player player;
+
+    private void Awake()
+    {
+        player = GameObject.FindWithTag("Player").GetComponent<Player>();
+    }
+
     private void Start()
     {
         sentences = new Queue<string>();
@@ -27,6 +34,8 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
+        player.canMove = false;
+
         animaor.SetBool("IsOpen", true);
 
         Debug.Log("Starting conversation with " + dialogue.name);
@@ -69,6 +78,8 @@ public class DialogueManager : MonoBehaviour
     private void EndDialogue()
     {
         animaor.SetBool("IsOpen", false);
+
+        player.canMove = true;
 
         Debug.Log("End of conversation.");
     }
