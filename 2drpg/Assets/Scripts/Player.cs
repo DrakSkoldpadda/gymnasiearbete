@@ -16,10 +16,17 @@ public class Player : MonoBehaviour, IMove
 
     private float time;
 
+    [SerializeField] private CameraMover cameraMover;
+
     // Update is called once per frame
     void Update()
     {
         Movement();
+    }
+
+    void OnBecameInvisible()
+    {
+        cameraMover.Movement();
     }
 
     public void Movement()

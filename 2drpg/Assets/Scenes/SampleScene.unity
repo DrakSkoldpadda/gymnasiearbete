@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 301953165}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -277,8 +277,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 579cc5b0e29f9c54b97e5fcd8d7e74cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 10
   canMove: 1
+  cameraMover: {fileID: 519420030}
 --- !u!1 &310726329
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,6 +434,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: New Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -544,6 +547,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -559,6 +563,20 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbf68dfc20c76b74db24e64865de1920, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerObject: {fileID: 301953162}
+  cameraMovingSpeed: 5
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -737,6 +755,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 6590027158491025817, guid: 9a296b1ec00b05c49ab0126324902a75,
     type: 3}
   m_Type: 0
@@ -856,6 +876,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 7311176613240578349, guid: 9a296b1ec00b05c49ab0126324902a75,
     type: 3}
   m_Type: 0
@@ -976,6 +998,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: New Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1216,6 +1240,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -3301,7 +3327,7 @@ TilemapCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 1
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
@@ -3322,110 +3348,9 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 2028613904}
-    m_ColliderPaths:
-    - - X: -31875022
-        Y: -50000000
-      - X: -30625001
-        Y: -44999996
-      - X: -31249999
-        Y: -41875005
-      - X: -31874998
-        Y: -39999997
-      - X: -30625001
-        Y: -34999996
-      - X: -31249999
-        Y: -31875005
-      - X: -31874998
-        Y: -29999997
-      - X: -30625001
-        Y: -24999996
-      - X: -31249999
-        Y: -21875005
-      - X: -31874998
-        Y: -19999997
-      - X: -30625001
-        Y: -14999996
-      - X: -31249999
-        Y: -11875005
-      - X: -31874998
-        Y: -9999997
-      - X: -30625001
-        Y: -4999996
-      - X: -31249999
-        Y: -1875005
-      - X: -31874998
-        Y: 3
-      - X: -30625001
-        Y: 5000004
-      - X: -31249999
-        Y: 8124995
-      - X: -31874998
-        Y: 10000003
-      - X: -30625001
-        Y: 15000004
-      - X: -31249999
-        Y: 18124995
-      - X: -31874998
-        Y: 20000003
-      - X: -30625001
-        Y: 25000004
-      - X: -31249999
-        Y: 28124995
-      - X: -31874998
-        Y: 30000003
-      - X: -30625001
-        Y: 35000004
-      - X: -31249999
-        Y: 38124995
-      - X: -31874998
-        Y: 40000003
-      - X: -30625001
-        Y: 45000004
-      - X: -31249999
-        Y: 48124996
-      - X: -31875021
-        Y: 50000000
-      - X: -38125000
-        Y: 49999971
-      - X: -38124971
-        Y: -50000000
+  m_ColliderPaths: []
   m_CompositePaths:
-    m_Paths:
-    - - {x: -3.1875045, y: -5}
-      - {x: -3.0625002, y: -4.499999}
-      - {x: -3.1249998, y: -4.187501}
-      - {x: -3.1874995, y: -3.9999993}
-      - {x: -3.0625002, y: -3.4999993}
-      - {x: -3.1249998, y: -3.187501}
-      - {x: -3.1874995, y: -2.9999995}
-      - {x: -3.0625002, y: -2.4999993}
-      - {x: -3.1249998, y: -2.1875007}
-      - {x: -3.1874995, y: -1.9999994}
-      - {x: -3.0625002, y: -1.4999992}
-      - {x: -3.1249998, y: -1.187501}
-      - {x: -3.1874995, y: -0.9999994}
-      - {x: -3.0625002, y: -0.4999992}
-      - {x: -3.1249998, y: -0.18750091}
-      - {x: -3.1874995, y: 0.0000006}
-      - {x: -3.0625002, y: 0.50000083}
-      - {x: -3.1249998, y: 0.8124991}
-      - {x: -3.1874995, y: 1.0000006}
-      - {x: -3.0625002, y: 1.5000008}
-      - {x: -3.1249998, y: 1.8124992}
-      - {x: -3.1874995, y: 2.0000007}
-      - {x: -3.0625002, y: 2.5000007}
-      - {x: -3.1249998, y: 2.8124993}
-      - {x: -3.1874995, y: 3.0000007}
-      - {x: -3.0625002, y: 3.500001}
-      - {x: -3.1249998, y: 3.8124993}
-      - {x: -3.1874995, y: 4.000001}
-      - {x: -3.0625002, y: 4.500001}
-      - {x: -3.1249998, y: 4.812499}
-      - {x: -3.1875043, y: 5}
-      - {x: -3.8125, y: 4.9999943}
-      - {x: -3.8124945, y: -5}
+    m_Paths: []
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.000005
 --- !u!50 &2028613906
@@ -3533,26 +3458,8 @@ Tilemap:
       m_ColliderType: 1
   - first: {x: -4, y: -2, z: 0}
     second:
-      m_TileIndex: 0
-      m_TileSpriteIndex: 1
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 1
-      m_ObjectToInstantiate: {fileID: 0}
-      m_TileFlags: 1
-      m_ColliderType: 1
-  - first: {x: -4, y: -1, z: 0}
-    second:
-      m_TileIndex: 0
-      m_TileSpriteIndex: 1
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 1
-      m_ObjectToInstantiate: {fileID: 0}
-      m_TileFlags: 1
-      m_ColliderType: 1
-  - first: {x: -4, y: 0, z: 0}
-    second:
-      m_TileIndex: 0
-      m_TileSpriteIndex: 1
+      m_TileIndex: 1
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 1
       m_ObjectToInstantiate: {fileID: 0}
@@ -3596,15 +3503,21 @@ Tilemap:
       m_ColliderType: 1
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 10
+  - m_RefCount: 7
     m_Data: {fileID: 11400000, guid: 049c15f79ca0cb34f8173fc52bfe36ab, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 9ada16d05b9b3df44a10adcb2ef53ae0, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 10
+  - m_RefCount: 7
     m_Data: {fileID: 21300000, guid: 862986486f6978f4c806466fe0fce9ab, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: f08f811b205149c48a8d3be5a2f7ba3c, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 10
+  - m_RefCount: 8
     m_Data:
       e00: 1
       e01: 0
@@ -3625,7 +3538,7 @@ Tilemap:
   m_TileColorArray:
   - m_RefCount: 0
     m_Data: {r: 1.8923e-41, g: 1.8923e-41, b: 1.8923e-41, a: 1.8923e-41}
-  - m_RefCount: 10
+  - m_RefCount: 8
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
