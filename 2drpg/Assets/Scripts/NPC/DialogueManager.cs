@@ -12,11 +12,11 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
 
-    private Player player;
+    private PlayerMovement player;
 
     private void Awake()
     {
-        player = GameObject.FindWithTag("Player").GetComponent<Player>();
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
     }
 
     private void Start()
