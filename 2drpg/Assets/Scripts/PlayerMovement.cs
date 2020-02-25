@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class Player : MonoBehaviour, IMove
+public class PlayerMovement : MonoBehaviour, IMove
 {
     public float Speed => moveSpeed;
     [SerializeField] private float moveSpeed = 3f;

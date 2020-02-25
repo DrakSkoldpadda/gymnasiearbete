@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraMover : MonoBehaviour
 {
     [SerializeField] private GameObject playerObject;
-    private Player player;
+    private PlayerMovement player;
     public float Speed => cameraMovingSpeed;
     [SerializeField] private float cameraMovingSpeed = 5f;
 
@@ -16,7 +16,7 @@ public class CameraMover : MonoBehaviour
 
     void Start()
     {
-        player = playerObject.GetComponent<Player>();
+        player = playerObject.GetComponent<PlayerMovement>();
     }
 
     public void Movement()
