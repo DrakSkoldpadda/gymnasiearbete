@@ -14,7 +14,7 @@ public class CameraMover : MonoBehaviour
 
     private float time;
 
-    void Start()
+    private void Awake()
     {
         player = playerObject.GetComponent<PlayerMovement>();
     }
